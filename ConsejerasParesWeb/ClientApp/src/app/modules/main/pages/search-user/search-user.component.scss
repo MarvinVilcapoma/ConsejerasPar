@@ -1,0 +1,104 @@
+.page {
+    color: white;
+    padding: 0 1rem;
+    background: #f1f5f9;
+    &__box {
+      min-height: 120px;
+    background: linear-gradient(270deg,#1B89B5,#8a2d82)!important;
+      margin: 0 -1rem;
+      font-size: 30px;
+      font-weight: bold;
+    }
+    &__content {
+      min-height: calc(100vh - 178px);
+      border-radius: 10px;
+      margin-top: -2rem;
+      background: white;
+      color: black;
+      font-size: 2rem;
+      &-data {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -25%);
+      }
+    }
+  }
+
+  label{
+    font-size: 15px;
+  }
+  
+  .page__botones{
+    // background-color: #8a2d82;
+    display: flex;
+    position: relative;
+    margin-top: 2%;
+    margin-bottom: 0%;
+    align-items: flex-end;
+    
+  }
+  
+  .buttonEvent{
+    margin: 10px;
+    background-color: #8a2d82;
+    border-color: #8a2d82;
+  }
+  
+  // .table-responsive{
+  //   margin-top: 5%;
+  //   border-color: black;
+  //   border-collapse: collapse;
+  //   th{
+  //     font-size: 16px;
+  //     background-color: #8a2d82;
+  //     color: #f1f5f9;
+  //   }
+  //   td{
+  //     font-size: 15px;
+  //   }
+  //   table{
+  //     border-color: black;
+  //   }
+  // }
+
+  .content-table {
+    border-collapse: collapse;
+    // margin: 25px 0;
+    font-size: 0.4em;
+    // min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .content-table thead tr {
+    background-color: #8a2d82;
+    color: #ffffff;
+    // text-align: left;
+    font-weight: bold;
+  }
+  
+  .content-table th,
+  .content-table td {
+    padding: 12px 15px;
+  }
+  
+  .content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  .content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  
+  .content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #8a2d82;
+  }
+  
+  .content-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+  }
+  
+  
+  

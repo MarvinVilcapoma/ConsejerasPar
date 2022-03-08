@@ -1,0 +1,13 @@
+<div class="login-page">
+    <div class="form">
+      <div class="logo">
+        <img src="assets/images/new-logo.png" class="brand_logo" height="100" alt="Logo">
+      </div>
+      <form class="login-form" (ngSubmit)="login(form)" #form="ngForm"  novalidate>
+        <input type="text" placeholder="username" name="username" [(ngModel)]="user.username" #username="ngModel"/>
+        <input type="password" placeholder="password" name="password" [(ngModel)]="user.password" #password="ngModel" />
+        <button>login </button>
+      </form>
+    </div>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,31 @@
+<mat-nav-list>
+    <div class="logo py-4">
+        <img src="assets/images/new-logo.png" class="brand_logo" height="100%" alt="Logo">
+    </div>
+    <mat-divider></mat-divider>
+    <h2 matSubheader class="mt-2">APLICACIONES</h2>
+  
+    <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['main/createUser']">
+    <!-- <a mat-list-item routerLinkActive="list-item-active" id="createUser" routerLink="/main/createUser"> -->
+      <mat-icon>person</mat-icon> Crear Usuario
+    </a>
+    <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['main/searchUser']"> 
+    <!-- <a mat-list-item routerLinkActive="list-item-active" id="searchUser" routerLink="/main/searchUser">  -->
+
+      <mat-icon>people</mat-icon> Buscar Usuario 
+    </a>
+    <!-- <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['main/registerContact']"> 
+      <mat-icon>phone</mat-icon> Registrar Contacto 
+    </a> -->
+    <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['main/searchContact']"> 
+      <mat-icon>search</mat-icon> Buscar Contacto 
+    </a>
+    <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['main/referredNutritionist']"> 
+      <mat-icon>folder</mat-icon> Referir a Nutricionista 
+    </a>
+    <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['main/assignmentParticipant']"> 
+      <mat-icon>wc</mat-icon> Asignar Participante 
+    </a>
+
+
+</mat-nav-list>

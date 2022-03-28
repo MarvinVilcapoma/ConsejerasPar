@@ -23,3 +23,123 @@
       }
     }
   }
+
+  label{
+    font-size: 15px;
+  }
+  
+  .page__botones{
+    // background-color: #8a2d82;
+    display: flex;
+    position: relative;
+    margin-top: 2%;
+    margin-bottom: 0%;
+    align-items: flex-end;
+    
+  }
+  
+  .buttonEvent{
+    margin: 10px;
+    border-radius: 5px 5px 5px 5px;
+    background-color: #8a2d82;
+    border-color: #8a2d82;
+      // padding: 10px 10px;
+      // outline: none;
+      // font-weight: 400;
+      // font-size: 16px;
+      // letter-spacing: 1px;
+      // color: #ffffff;
+      // // background: #1e293b;
+      // background:#8a2d82!important;
+      // border: none;
+  }
+
+  .content-table {
+    border-collapse: collapse;
+    // margin: 25px 0;
+    font-size: 0.4em;
+    // min-width: 400px;
+    border-radius: 5px 5px 5px 5px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .content-table thead tr {
+    background-color: #8a2d82;
+    color: #ffffff;
+    // text-align: left;
+    font-weight: bold;
+  }
+  
+  .content-table th,
+  .content-table td {
+    padding: 12px 15px;
+  }
+  
+  .content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  .content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  
+  .content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #8a2d82;
+  }
+  
+  .content-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+  }
+  
+  pagination-controls{
+    font-size: 0.4em;
+    background-color: #8a2d82;
+  }
+
+  .ngx-pagination{
+    background: #8a2d82;
+  }
+
+  .current ng-star-inserted{
+    background-color: #8a2d82;
+  }
+  
+  .form input {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    border: black;
+    background: #fff;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+
+  // .container{
+  //   display: flex;
+  //   flex-wrap: wrap;
+  //   justify-content: space-between;
+  // }
+
+  // #tab2{
+  //   border:#CACFD2 20px solid;
+  //   // padding: 5px;
+  //   color: white;
+  //   box-shadow: #CACFD2;
+  //   width: 500px;
+  //   // margin: 10px;
+  // }
+
+  // #tab3{
+  //   border:#CACFD2 20px solid;
+  //   padding: 5px;
+  //   color: #fff;
+  //   width: 425px;
+  //   margin: 10px;
+  //   background:#1C2833;                                                           
+  // }
+  

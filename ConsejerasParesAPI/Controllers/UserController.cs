@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 
 namespace ConsejerasParesAPI.Controllers
 {
-    [Authorize(AuthenticationSchemes = "SecurityKey")]
+    //[Authorize(AuthenticationSchemes = "SecurityKey")]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -61,15 +61,88 @@ namespace ConsejerasParesAPI.Controllers
             }
         }
 
-        [Route("GetParticipantsForCounselor")]
+        [Route("GetCounselors")]
         [HttpGet]
-        public EResponseBase<AssignmentResponseV1> GetParticipantsForCounselor()
+        public EResponseBase<UserResponseV1> GetCounselors()
         {
             logger.Print_InitMethod();
             try
             {
-                string CurrentCounselorId = User.FindFirst("id")?.Value;
-                var responseJSON = service.GetParticipantsForCounselor(int.Parse(CurrentCounselorId));
+                logger.Print_Request(null);
+                var responseJSON = service.GetCounselors();
+                logger.Print_Response(responseJSON);
+                var response = Mapper.Map<EResponseBase<UserResponseV1>>(responseJSON);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                return new UtilitariesResponse<UserResponseV1>(config).setResponseBaseForException(ex);
+            }
+            finally
+            {
+                logger.Print_EndMethod();
+            }
+        }
+
+        [Route("GetParticipants")]
+        [HttpGet]
+        public EResponseBase<UserResponseV1> GetParticipants()
+        {
+            logger.Print_InitMethod();
+            try
+            {
+                logger.Print_Request(null);
+                var responseJSON = service.GetParticipants();
+                logger.Print_Response(responseJSON);
+                var response = Mapper.Map<EResponseBase<UserResponseV1>>(responseJSON);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                return new UtilitariesResponse<UserResponseV1>(config).setResponseBaseForException(ex);
+            }
+            finally
+            {
+                logger.Print_EndMethod();
+            }
+        }
+
+        [Route("GetNutritionists")]
+        [HttpGet]
+        public EResponseBase<UserResponseV1> GetNutritionists()
+        {
+            logger.Print_InitMethod();
+            try
+            {
+                logger.Print_Request(null);
+                var responseJSON = service.GetNutritionists();
+                logger.Print_Response(responseJSON);
+                var response = Mapper.Map<EResponseBase<UserResponseV1>>(responseJSON);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                return new UtilitariesResponse<UserResponseV1>(config).setResponseBaseForException(ex);
+            }
+            finally
+            {
+                logger.Print_EndMethod();
+            }
+        }
+
+        [Route("GetParticipantsForCounselor/{id}")]
+        [HttpGet]
+        public EResponseBase<AssignmentResponseV1> GetParticipantsForCounselor(int Id)
+        {
+            logger.Print_InitMethod();
+            try
+            {
+                //string CurrentCounselorId = User.FindFirst("id")?.Value;
+                //var responseJSON = service.GetParticipantsForCounselor(int.Parse(CurrentCounselorId));
+                var responseJSON = service.GetParticipantsForCounselor(Id);
                 logger.Print_Response(responseJSON);
                 var response = Mapper.Map<EResponseBase<AssignmentResponseV1>>(responseJSON);
                 return response;
@@ -85,6 +158,34 @@ namespace ConsejerasParesAPI.Controllers
             }
         }
 
+
+        [Route("GetParticipantsForAssignments")]
+        [HttpGet]
+        public EResponseBase<AssignmentResponseV1> GetParticipantsForAssignments()
+        {
+            logger.Print_InitMethod();
+            try
+            {
+                //string CurrentCounselorId = User.FindFirst("id")?.Value;
+                var responseJSON = service.GetParticipantsForAssignments();
+                logger.Print_Response(responseJSON);
+                var response = Mapper.Map<EResponseBase<AssignmentResponseV1>>(responseJSON);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                return new UtilitariesResponse<AssignmentResponseV1>(config).setResponseBaseForException(ex);
+            }
+            finally
+            {
+                logger.Print_EndMethod();
+            }
+        }
+
+
+
+
         [Route("GetByFilters")]
         [HttpPost]
         public EResponseBase<UserResponseV2> GetByFilters([FromBody] UserRequestV2 request)
@@ -95,6 +196,57 @@ namespace ConsejerasParesAPI.Controllers
                 logger.Print_Request(request);
                 var requestConvert = Mapper.Map<User>(request);
                 var responseJSON = service.GetByFilters(requestConvert);
+                logger.Print_Response(responseJSON);
+                var response = Mapper.Map<EResponseBase<UserResponseV2>>(responseJSON);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                return new UtilitariesResponse<UserResponseV2>(config).setResponseBaseForException(ex);
+            }
+            finally
+            {
+                logger.Print_EndMethod();
+            }
+        }
+
+
+        [Route("GetByFiltersCounselors")]
+        [HttpPost]
+        public EResponseBase<CounselorResponseV2> GetByFiltersCounselors([FromBody] CounselorRequestV2 request)
+        {
+            logger.Print_InitMethod();
+            try
+            {
+                logger.Print_Request(request);
+                var requestConvert = Mapper.Map<Counselor>(request);
+                var responseJSON = service.GetByFiltersCounselors(requestConvert);
+                logger.Print_Response(responseJSON);
+                var response = Mapper.Map<EResponseBase<CounselorResponseV2>>(responseJSON);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                return new UtilitariesResponse<CounselorResponseV2>(config).setResponseBaseForException(ex);
+            }
+            finally
+            {
+                logger.Print_EndMethod();
+            }
+        }
+
+        [Route("GetByFiltersParticipants")]
+        [HttpPost]
+        public EResponseBase<UserResponseV2> GetByFiltersParticipants([FromBody] UserRequestV2 request)
+        {
+            logger.Print_InitMethod();
+            try
+            {
+                logger.Print_Request(request);
+                var requestConvert = Mapper.Map<Participant>(request);
+                var responseJSON = service.GetByFiltersParticipants(requestConvert);
                 logger.Print_Response(responseJSON);
                 var response = Mapper.Map<EResponseBase<UserResponseV2>>(responseJSON);
                 return response;

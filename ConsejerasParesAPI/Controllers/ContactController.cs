@@ -87,7 +87,30 @@ namespace ConsejerasParesAPI.Controllers
             }
         }
 
-
+        [Route("GetByFilters")]
+        [HttpPost]
+        public EResponseBase<ContactResponseV1> GetByFilters([FromBody] ContactRequestV2 request)
+        {
+            logger.Print_InitMethod();
+            try
+            {
+                logger.Print_Request(request);
+                var requestConvert = Mapper.Map<Contact>(request);
+                var responseJSON = service.GetByFilters(requestConvert);
+                logger.Print_Response(responseJSON);
+                var response = Mapper.Map<EResponseBase<ContactResponseV1>>(responseJSON);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                return new UtilitariesResponse<ContactResponseV1>(config).setResponseBaseForException(ex);
+            }
+            finally
+            {
+                logger.Print_EndMethod();
+            }
+        }
 
     }
 }

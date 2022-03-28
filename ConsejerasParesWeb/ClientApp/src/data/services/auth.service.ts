@@ -25,17 +25,17 @@ export class AuthService {
       this._usuario = JSON.parse(sessionStorage.getItem("usuario") || '{}') as UserResponseV2;
       return this._usuario;
     }
-    return this._usuario
+    return this._usuario;
   }
 
-  public get token(): string {
+  public get token(): string | any {
     if (this._token != null) {
       return this._token;
     } else if (this._token == null && sessionStorage.getItem("token") != null) {
       this._token = sessionStorage.getItem("token") || '';
       return this._token;
     }
-    return "null";
+    return null;
   }
 //   saveUser(auth: AuthResponseV1): void {
 //     sessionStorage.setItem("usuario", JSON.stringify(auth));
@@ -47,10 +47,11 @@ export class AuthService {
     let payload = this.obtenerDatosToken(accessToken);
     console.log(payload)
     this._usuario = new UserResponseV2();
-    this.usuario.userID = payload.userid;
-    this.usuario.names = payload.name; 
-    this._usuario.userName = payload.username;
-    this._usuario.email = payload.email;
+    this.usuario.userID = payload.id;
+    this.usuario.fullName = payload.fullname;
+    this.usuario.userName = payload.username; 
+    // this._usuario.userName = payload.username;
+    // this._usuario.email = payload.email;
     this._usuario.exp = payload.exp;
     console.log(this.usuario);
     sessionStorage.setItem("user", JSON.stringify(this._usuario));
@@ -78,9 +79,15 @@ export class AuthService {
     return (this.usuario != null) ? true : false;
   }
 
+  // logout(): void {
+  //   this._usuario == null;
+  //   sessionStorage.clear();
+  //   sessionStorage.removeItem("usuario");
+  // }
+
   logout(): void {
-    this._usuario == null;
-    sessionStorage.clear();
-    sessionStorage.removeItem("usuario");
+    this._token = "";
+    sessionStorage.removeItem("user");
+    sessionStorage.removeItem("token");
   }
 }

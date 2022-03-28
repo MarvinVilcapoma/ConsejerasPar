@@ -10,6 +10,7 @@ export class SearchContactComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }

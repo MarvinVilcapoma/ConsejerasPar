@@ -92,7 +92,7 @@ namespace ConsejerasParesAPI.Controllers
                     //new Claim(ClaimTypes.Email, string.IsNullOrEmpty(request.Email)? "" : request.Email),
                     new Claim("username", request.UserName),
                     new Claim("name", string.IsNullOrEmpty(request.FirstName)? "" : request.FirstName),
-                    new Claim("fullname",$"{request.FirstName} {request.SecondName} {request.FirstLastName} {request.SecondLastName}".Replace("  "," "))
+                    new Claim("fullname",$"{request.FirstName} {request.SecondName} {request.FirstLastName} {request.SecondLastName}".Replace("  "," ")),
                     //new Claim("firstLastName", string.IsNullOrEmpty(request.FirstLastName)? "": request.FirstLastName ),
                     //new Claim("secondLastName", string.IsNullOrEmpty(request.SecondLastName)? "" : request.SecondLastName),
                     //new Claim("roleID", request.RoleID.ToString()),

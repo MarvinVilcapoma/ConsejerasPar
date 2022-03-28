@@ -133,7 +133,7 @@ namespace Common
             response.Code = ConfigurationLib.CodigoParametrosNoValido;
             response.Message = ConfigurationLib.MensajeParametrosNoValidoES;
             response.MessageEN = ConfigurationLib.MensajeParametrosNoValidoEN;
-            /*response.FunctionalErrors = errors.ToList();*/
+            response.FunctionalErrors = errors.ToList();
             return response;
         }
         public EResponseBase<T> setResponseBaseForOK()
@@ -185,7 +185,7 @@ namespace Common
                 response.Message = ConfigurationLib.MensajeErrorNoEspecificadoES;
                 response.MessageEN = ConfigurationLib.MensajeErrorNoEspecificadoEN;
             }
-            /*response.TechnicalErrors = ex;*/
+            response.TechnicalErrors = ex;
             return response;
         }
         public EResponseBase<T> setResponseBaseForNoAuthorized()

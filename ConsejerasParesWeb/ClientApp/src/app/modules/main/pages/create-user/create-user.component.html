@@ -1,83 +1,90 @@
 <div class="container-fluid page">
     <div class="d-flex page__box p-3 mt-2">Crear Usuario</div>
     <div class="page__content shadow p-3 position-relative">
-      <div class="row">
-        <div class="col-md-6">
+        <form class="createUser-form" (ngSubmit)="CreateUser(form)" #form="ngForm" novalidate> 
             <div class="row">
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">Primer Nombre</label>
-                    <div class="col-sm-9">
-                        <input class="form-control" type="text" name="fiscalYear">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Primer Nombre</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="text" name="firstName" placeholder="Primer Nombre"
+                                [(ngModel)]="request.firstName" #firstName="ngModel">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Segundo Nombre</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" name="secondName" placeholder="Segundo Nombre"
+                            [(ngModel)]="request.secondName" #secondName="ngModel">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-6">
-          <div class="row">
-              <div class="form-group">
-                  <label class="col-sm-3 control-label">Segundo Nombre</label>
-                  <div class="col-sm-9">
-                      <input class="form-control" type="text" name="fiscalYear">
-                  </div>
-              </div>
-          </div>
-      </div>
-      <div class="col-md-6">
-        <div class="row">
-            <div class="form-group">
-                <label class="col-sm-3 control-label">Primer Apellido</label>
-                <div class="col-sm-9">
-                    <input class="form-control" type="text" name="fiscalYear">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Primer Apellido</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" name="firstLastName" placeholder="Primer Apellido"
+                            [(ngModel)]="request.firstLastName" #firstLastName="ngModel">
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="row">
-            <div class="form-group">
-                <label class="col-sm-3 control-label">Segundo Apellido</label>
-                <div class="col-sm-9">
-                    <input class="form-control" type="text" name="fiscalYear">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Segundo Apellido</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" name="secondLastName" placeholder="Segundo Apellido"
+                            [(ngModel)]="request.secondLastName" #secondLastName="ngModel">
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="row">
-            <div class="form-group">
-                <label class="col-sm-3 control-label">Email</label>
-                <div class="col-sm-9">
-                    <input class="form-control" type="email" name="fiscalYear">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Email</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="email" name="email" placeholder="Email"
+                            [(ngModel)]="request.email" #email="ngModel">
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="row">
-            <div class="form-group">
-                <label class="col-sm-3 control-label">WicID</label>
-                <div class="col-sm-9">
-                    <input class="form-control" type="text" name="fiscalYear">
+            <!-- <div class="col-md-6">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">WicID</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" name="fiscalYear">
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            </div>
+            <div class="page__botones">
+                <div class="col-sm-12 text-center">
+                    <button type="submit" class="btn btn-success buttonEvent btn-quirk btn-wide mr5">
+                        REGISTRAR
+                    </button>
+                    <button type="button" class="btn btn-quirk btn-wide btn-default" (click)="Clear(form)">
+                        LIMPIAR
+                    </button>
                 </div>
             </div>
-        </div>
-      </div>
-    </div>
-
+        </form>
     
 
     <!-- <hr /> -->
 
-    <div class="page__botones">
-        <div class="col-sm-12 text-center">
-            <button type="submit" class="btn btn-success buttonEvent btn-quirk btn-wide mr5">
-                BUSCAR
-            </button>
-            <button type="button" class="btn btn-quirk btn-wide btn-default">
-                LIMPIAR
-            </button>
-        </div>
-    </div>
+
 
     </div>
 </div>

@@ -1,31 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 // import { MatTableDataSource } from '@angular/material/table';
 import { UserRequestV2 } from 'src/data/schemas/request/UserRequestV2';
 import { UserResponseV3 } from 'src/data/schemas/response/UserResponseV3';
+import { AuthService } from 'src/data/services/auth.service';
 import { UserService } from 'src/data/services/user.service';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatSort } from '@angular/material/sort';
-import { MatPaginator } from '@angular/material/paginator';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+import jwt_decode from "jwt-decode";
 
 @Component({
   selector: 'app-search-user',
@@ -34,28 +14,20 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class SearchUserComponent implements OnInit {
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-  
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  // dataSource = ELEMENT_DATA;
-  public dataSource!: MatTableDataSource<any>;
 
-
+  public currentPage:number = 0;
 
   public request: UserRequestV2 = new UserRequestV2();
 
   public userResult: UserResponseV3[] = []; 
+  
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private authService: AuthService) { }
 
   ngOnInit(): void {
 
-
-    this.dataSource = new MatTableDataSource(ELEMENT_DATA);
-
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    var decoded = jwt_decode(this.authService.token);
+    console.log(decoded);
     
     this.userService.getByFilters(this.request).subscribe((response)=>{
       if(response.code == 0){
@@ -66,4 +38,15 @@ export class SearchUserComponent implements OnInit {
 
   }
 
+  SearchUser(searchUser:NgForm):void{
+    this.userService.getByFilters(this.request).subscribe((res)=>{
+      if(res.code == 0){
+        this.userResult = res.listado;
+      }
+    });
+  }
+
+  Clear(searchUser:NgForm):void{
+    searchUser.reset();
+  }
 }

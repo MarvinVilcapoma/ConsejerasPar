@@ -1,83 +1,92 @@
 <div class="container-fluid page">
     <div class="d-flex page__box p-3 mt-2">Buscar Usuario</div>
     <div class="page__content shadow p-3 position-relative">
-      <div class="row">
-        <div class="col-md-4">
+        <form class="searchUser-form" (ngSubmit)="SearchUser(form)" #form="ngForm"  novalidate>
             <div class="row">
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">Primer Nombre</label>
-                    <div class="col-sm-9">
-                        <input class="form-control" type="text" name="firstName" placeholder="Ingrese el primer nombre">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Primer Nombre</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="text" name="firstName" placeholder="Ingrese el primer nombre"
+                                [(ngModel)]="request.firstName" #firstName="ngModel">
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-          <div class="row">
-              <div class="form-group">
-                  <label class="col-sm-3 control-label">Segundo Nombre</label>
-                  <div class="col-sm-9">
-                      <input class="form-control" type="text" name="secondName" placeholder="Ingrese el segundo nombre">
+                <div class="col-md-4">
+                  <div class="row">
+                      <div class="form-group">
+                          <label class="col-sm-3 control-label">Segundo Nombre</label>
+                          <div class="col-sm-9">
+                              <input class="form-control" type="text" name="secondName" placeholder="Ingrese el segundo nombre"
+                              [(ngModel)]="request.secondName" #secondName="ngModel">
+                          </div>
+                      </div>
                   </div>
               </div>
-          </div>
-      </div>
-      <div class="col-md-4">
-        <div class="row">
-            <div class="form-group">
-                <label class="col-sm-3 control-label">Primer Apellido</label>
-                <div class="col-sm-9">
-                    <input class="form-control" type="text" name="firstLastName" placeholder="Ingrese el primer apellido">
+              <div class="col-md-4">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Primer Apellido</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" name="firstLastName" placeholder="Ingrese el primer apellido"
+                            [(ngModel)]="request.firstLastName" #firstLastName="ngModel">
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="row">
-            <div class="form-group">
-                <label class="col-sm-3 control-label">Segundo Apellido</label>
-                <div class="col-sm-9">
-                    <input class="form-control" type="text" name="secondLastName" placeholder="Ingrese el segundo apellido">
+              </div>
+              <div class="col-md-4">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Segundo Apellido</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" name="secondLastName" placeholder="Ingrese el segundo apellido"
+                            [(ngModel)]="request.secondLastName" #secondLastName="ngModel">
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="row">
-            <div class="form-group">
-                <label class="col-sm-3 control-label">Email</label>
-                <div class="col-sm-9">
-                    <input class="form-control" type="email" name="email" placeholder="Ingrese el Email">
+              </div>
+              <div class="col-md-4">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Email</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="email" name="email" placeholder="Ingrese el Email"
+                            [(ngModel)]="request.email" #email="ngModel">
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="row">
-            <div class="form-group">
-                <label class="col-sm-3 control-label">WicID</label>
-                <div class="col-sm-9">
-                    <input class="form-control" type="text" name="wicID" placeholder="Ingrese el WICID ">
+              </div>
+              <div class="col-md-4">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">WicID</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="text" name="wicId" placeholder="Ingrese el WICID"
+                            [(ngModel)]="request.wicId" #wicId="ngModel">
+                        </div>
+                    </div>
                 </div>
+              </div>
             </div>
-        </div>
-      </div>
-    </div>
+            <div class="page__botones">
+                <div class="col-sm-12 text-center">
+                    <button type="submit"  class="btn btn-success buttonEvent btn-quirk btn-wide mr5">
+                        BUSCAR
+                    </button>
+                    <button type="button" class="btn btn-quirk btn-wide btn-default" (click)="Clear(form)">
+                        LIMPIAR
+                    </button>
+                </div>
+              </div>
+        </form>
     
-    <div class="page__botones">
-      <div class="col-sm-12 text-center">
-          <button type="submit" class="btn btn-success buttonEvent btn-quirk btn-wide mr5">
-              BUSCAR
-          </button>
-          <button type="button" class="btn btn-quirk btn-wide btn-default">
-              LIMPIAR
-          </button>
-      </div>
-    </div>
+    
     <div class="table-responsive">
 
         <!-- <table class="table table-hover table-bordered border-black"> -->
-        <table class="table table-bordered content-table">
+        <table class="table  table-bordered content-table">
             <thead>
                 <tr>
                     <th>Nombre Completo</th>
@@ -86,15 +95,21 @@
                 </tr>
             </thead>
             <tbody>
-                <ng-container *ngFor="let item of userResult">
-                <tr>
+                <!-- <ng-container *ngFor="let item of userResult | paginate: { itemsPerPage: 10, currentPage: currentPage, totalItems: userResult.length }"> -->
+                <tr *ngFor="let item of userResult | paginate: { itemsPerPage: 10, currentPage: currentPage, totalItems: userResult.length }">
                     <td>{{ item.firstName }} {{item.secondName}} {{item.firstLastName}} {{item.secondLastName}}</td>
                     <td>{{ item.email}}</td>
                     <td>{{ item.wicId}}</td>
                 </tr>
-                </ng-container>
+                <!-- </ng-container> -->
+
             </tbody>
         </table>
+        <p class="text-center" *ngIf="userResult.length > 0">
+            <br>
+            <pagination-controls class="my-pagination" (pageChange)="currentPage = $event" previousLabel="Anterior"
+                nextLabel="Próximo"></pagination-controls>
+        </p>
     </div> 
       
 </div>

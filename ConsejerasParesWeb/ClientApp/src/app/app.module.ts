@@ -8,13 +8,14 @@ import { ConfigLoaderService } from 'src/data/services/config-loader.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BackgroundLayoutComponent } from './modules/shared/components/background-layout/background-layout.component';
 import { SharedModule } from './modules/shared/shared.module';
 // import { BackgroundLayoutComponent } from './modules/shared/components/background-layout/background-layout.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
     // BackgroundLayoutComponent
   ],
   imports: [

@@ -11,6 +11,8 @@ namespace Model.Response
         public NutritionistResponseV1 Nutritionist { get; set; }
         public int AssignmentId { get; set; }
         public AssignmentResponseV1 Assignment { get; set; }
+
+        public string Description { get; set; }
         public DateTime CreatedOn { get; set; }
         public bool Enabled { get; set; }
     }

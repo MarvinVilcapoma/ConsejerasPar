@@ -1,3 +1,5 @@
 {
-    "urlApi":"https://localhost:44305/api"
+    "urlApi1":"https://localhost:44305/api",
+    "urlApi2":"http://18.232.226.120/CounselorsAPIDev/api",
+    "urlApi":"https://enviodocumentos.wicpr.net/CounselorsAPI/api"
 }

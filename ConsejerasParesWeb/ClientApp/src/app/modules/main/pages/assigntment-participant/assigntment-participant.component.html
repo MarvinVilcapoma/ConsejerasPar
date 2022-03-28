@@ -1,8 +1,117 @@
 <div class="container-fluid page">
     <div class="d-flex page__box p-3 mt-2">Asignar Participante</div>
     <div class="page__content shadow p-3 position-relative">
-      <div class="page__content-data position-absolute text-center">
-        <!-- Home Content Goes Here -->
+      <div class="row">
+        <div class="tab2 col-sm-5">
+          <form class="searchUser-form">
+                <div class="col-md-12">
+                    <div class="row">
+                        <h5 style="text-align: center;">Consejeros</h5>
+                        <div class="form-group">
+                            <label class="col-sm-6 control-label">Primer Nombre</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" [(ngModel)]="filterCounselor" 
+                                #firstName="ngModel" type="text" name="firstName" placeholder="Ingrese el primer nombre">
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          </form>
+          <div class="table-responsive">
+              <table class="table  table-bordered content-table">
+                  <thead>
+                      <tr>
+                          <th>WICID</th>
+                          <th>Nombres</th>
+                          <th>Apellidos</th>
+                          <th>Email</th>
+                          <th>Seleccionar</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of counselorsResult | filter: filterCounselor:currentPageCounselors | paginate: { id:'paginationCounselor' , itemsPerPage: 5, currentPage: currentPageCounselors, totalItems: counselorsResult.length}" >
+                      <td>{{item.wicId}}</td>
+                      <td>{{item.firstName}} {{item.secondName}}</td>
+                      <td>{{item.firstLastName}} {{item.secondLastName}}</td>
+                      <td>{{item.email}}</td>
+                      <td> <input type="checkbox" class="cbox" name="radioD" id="radioD2"/></td>
+                    </tr>
+                  </tbody>
+              </table>
+              <p class="text-center" *ngIf="counselorsResult.length > 0">
+                <br>
+                <pagination-controls class="my-pagination" id="paginationCounselor" (pageChange)="currentPageCounselors = $event" previousLabel="Anterior"
+                    nextLabel="Próximo"></pagination-controls>
+              </p>
+          </div>
+        </div>
+        <div class="col-sm-2" id="btnAsignar">
+          <button type="submit" class="btn btn-success buttonEvent btn-quirk btn-wide">
+            Asignar
+          </button>
+        </div>
+        <div class="tab3 col-sm-5">
+          <form class="searchUser-form">
+                <div class="col-md-12">
+                    <div class="row">
+                        <h5 style="text-align: center;">Participantes</h5>
+                        <div class="form-group">
+                            <label class="col-sm-6 control-label">Primer Nombre</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" type="text" name="firstName" placeholder="Ingrese el nombre o apellido" [(ngModel)]="filterParticipant" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          </form>
+          <div class="table-responsive">
+              <table class="table table-bordered content-table">
+                  <thead>
+                      <tr>
+                        <th>WICID</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Email</th>
+                        <th>Acciones</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item1 of participantsResult | filter: filterParticipant | paginate: { id:'paginationParticipant', itemsPerPage: 5, currentPage: currentPageParticipants, totalItems: totalLengthParticipants }">
+                    <!-- <tr *ngFor="let item1 of participantsResult"> -->
+                      <td>{{item1.wicId}}</td>
+                      <td>{{item1.firstName}} {{item1.secondName}}</td>
+                      <td>{{item1.firstLastName}} {{item1.secondLastName}}</td>
+                      <td>{{item1.email}}</td>
+                      <td style="align-content: center;">
+                        <input type="radio" class="cbox" name="radioD" id="radioD2"/></td>
+                    </tr>
+                  </tbody>
+              </table>
+              <p class="text-center" *ngIf="totalLengthParticipants > 0">
+                <br>
+                <pagination-controls class="my-pagination" id="paginationParticipant" (pageChange)="currentPageParticipants = $event" previousLabel="Anterior"
+                    nextLabel="Próximo"></pagination-controls>
+              </p>
+          </div>
+        </div>
       </div>
+
+      <div class="table-responsive" id="assignment">
+        <table class="table  table-bordered content-table">
+            <thead>
+                <tr>
+                    <th>WICID Consejero</th>
+                    <th>Consejero</th>
+                    <th>WICID Participante</th>
+                    <th>Participante</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+      </div>
+
     </div>
 </div>

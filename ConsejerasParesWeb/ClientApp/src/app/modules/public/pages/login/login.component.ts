@@ -22,23 +22,23 @@ export class LoginComponent implements OnInit {
   }
 
   login(Login:NgForm):void{
-    // if(this.user.username==null || this.user.password ==null){
-    //   Swal.fire('Error login','usuario  o contraseña vacia','error');
-    //   return;
-    // }
-    // this.authService.Login(this.user).subscribe((res)=>{
-    //   console.log(res.objeto.accessToken);
-    //   this.authService.saveUser(res.objeto.accessToken);
-    //   this.authService.guardarToken(res.objeto.accessToken);
-    //   let usuario = this.authService.usuario;
-    //   console.log(usuario);
+    if(this.user.username==null || this.user.password ==null){
+      Swal.fire('Error login','usuario  o contraseña vacia','error');
+      return;
+    }
+    this.authService.Login(this.user).subscribe((res)=>{
+      console.log(res.objeto.accessToken);
+      this.authService.saveUser(res.objeto.accessToken);
+      this.authService.guardarToken(res.objeto.accessToken);
+      let usuario = this.authService.usuario;
+      console.log(usuario);
       this.router.navigate(['/main/createUser']);
-    //   Swal.fire('Login','Bienvenido '+usuario.names+", Haz iniciado sesion con exito",'success');
-    // },(err)=>{
-    //   if(err.status == 401){
-    //     Swal.fire('Error login','Usuario  o contraseña incorrecta','error');
-    //   }
-    // })
+      Swal.fire('Login','Bienvenido '+usuario.fullName+", Haz iniciado sesion con exito",'success');
+    },(err)=>{
+      if(err.status == 401){
+        Swal.fire('Error login','Usuario  o contraseña incorrecta','error');
+      }
+    })
   }
 
 }

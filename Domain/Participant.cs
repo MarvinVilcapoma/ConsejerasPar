@@ -11,6 +11,8 @@ namespace Domain
         /*public int ParticipantId { get; set; }*/
         public string WicId { get; set; }
 
+        public virtual string Discriminator { get; set; }
+
         /*[Column(TypeName = "datetime2(0)")]
         public DateTime CreatedOn { get; set; }
         [DefaultValue("true")]

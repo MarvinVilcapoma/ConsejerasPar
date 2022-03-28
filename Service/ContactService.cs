@@ -109,9 +109,9 @@ namespace Service
                         .Include(i => i.ContactType);
 
 
-                    if (request.Assignment.ParticipantId > 0) queryContact = queryContact.Where(x => x.Assignment.Participant.Enabled == true);
-                    if (request.Assignment.CounselorId > 0) queryContact = queryContact.Where(x => x.Assignment.Counselor.Enabled == true);
-                    if (request.ContactTypeId > 0) queryContact = queryContact.Where(x => x.ContactType.Enabled == true);
+                    if (request.Assignment.ParticipantId > 0 || request.Assignment != null) queryContact = queryContact.Where(x => x.Assignment.Participant.Enabled == true && x.Assignment.ParticipantId == request.Assignment.ParticipantId);
+                    if (request.Assignment.CounselorId > 0 || request.Assignment != null) queryContact = queryContact.Where(x => x.Assignment.Counselor.Enabled == true && x.Assignment.CounselorId == request.Assignment.CounselorId);
+                    if (request.ContactTypeId > 0) queryContact = queryContact.Where(x => x.ContactType.Enabled == true && x.ContactTypeId == request.ContactTypeId);
 
 
                     var query = queryContact.OrderBy(x => x.AssignmentId).ToList();

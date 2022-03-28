@@ -14,6 +14,7 @@ namespace Domain
         public Nutritionist Nutritionist { get; set; }
         public int AssignmentId { get; set; }
         public Assignment Assignment { get; set; }
+        public string Description { get; set; }
         public DateTime CreatedOn { get; set; }
         [DefaultValue("true")]
         public bool Enabled { get; set; }

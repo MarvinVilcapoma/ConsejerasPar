@@ -6,22 +6,36 @@
       <div class="row mr-2 ml-auto">
         <ul class="row m-0 align-items-center">
           <li>
-             <button
+             <!-- <button
               mat-button
               [matMenuTriggerFor]="logout"
               class="user mt-2 d-flex align-items-center">
               <img src="https://github.com/mdo.png" alt="" class="user-image mr-1 p-2" />
               
-              User Name
+              {{userName}}
               <mat-icon class="user-image-icon ml-1"
                 >keyboard_arrow_down</mat-icon>
             </button>
-            <mat-menu #logout="matMenu" yPosition="above">
+            <mat-menu #logout="matMenu" xPosition="before">
               <button mat-menu-item>
                 <mat-icon>exit_to_app</mat-icon>
                 Logout
               </button>
-            </mat-menu> 
+            </mat-menu> -->
+            <div class="dropdown mt-1">
+              <div>
+                <button class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="https://github.com/mdo.png" alt="" class="user-image mr-1 p-2 mt-1" />
+                  {{usuario}}                  
+                  <mat-icon class="user-image-icon"
+                >keyboard_arrow_down</mat-icon>
+                </button>
+              
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="" (click)="Logout()">Logout</a></li>
+              </ul>
+              </div>
+            </div> 
           </li>
         </ul>
       </div>

@@ -1,8 +1,91 @@
 <div class="container-fluid page">
-    <div class="d-flex page__box p-3 mt-2">Buscar Contacto</div>
-    <div class="page__content shadow p-3 position-relative">
-      <div class="page__content-data position-absolute text-center">
-        <!-- Home Content Goes Here -->
+  <div class="d-flex page__box p-3 mt-2">Buscar Contacto</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="row">
+      <div class="col-md-4">
+          <div class="row">
+              <div class="form-group">
+                  <label class="col-sm-3 control-label">Participante</label>
+                  <div class="col-sm-9">
+                      <input class="form-control" type="text" name="firstName" placeholder="Participante">
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-4">
+        <div class="row">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Consejero</label>
+                <div class="col-sm-9">
+                    <input class="form-control" type="text" name="secondName" placeholder="Participante">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+      <div class="row">
+          <div class="form-group">
+              <label class="col-sm-3 control-label">Tipo de Contacto</label>
+              <div class="col-sm-9">
+                  <input class="form-control" type="text" name="firstLastName" placeholder="Tipo de Contacto">
+              </div>
+          </div>
       </div>
     </div>
+    <div class="col-md-4">
+      <div class="row">
+          <div class="form-group">
+              <label class="col-sm-3 control-label">Fecha de Inicio</label>
+              <div class="col-sm-9">
+                  <input class="form-control" type="date" name="secondLastName">
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="row">
+          <div class="form-group">
+              <label class="col-sm-3 control-label">Fecha de Fin</label>
+              <div class="col-sm-9">
+                  <input class="form-control" type="date" name="email">
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="page__botones">
+    <div class="col-sm-12 text-center">
+        <button type="submit" class="btn btn-success buttonEvent btn-quirk btn-wide mr5">
+            BUSCAR
+        </button>
+        <button type="button" class="btn btn-quirk btn-wide btn-default">
+            LIMPIAR
+        </button>
+    </div>
+  </div>
+  <!-- <div class="table-responsive">
+      <table class="table  table-bordered content-table">
+          <thead>
+              <tr>
+                  <th>Nombre Completo</th>
+                  <th>Email</th>
+                  <th>WICID</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let item of userResult | paginate: { itemsPerPage: 10, currentPage: currentPage, totalItems: userResult.length }">
+                  <td>{{ item.firstName }} {{item.secondName}} {{item.firstLastName}} {{item.secondLastName}}</td>
+                  <td>{{ item.email}}</td>
+                  <td>{{ item.wicId}}</td>
+              </tr>
+          </tbody>
+      </table>
+      <p class="text-center" *ngIf="userResult.length > 0">
+          <br>
+          <pagination-controls class="my-pagination" (pageChange)="currentPage = $event" previousLabel="Anterior"
+              nextLabel="Próximo"></pagination-controls>
+      </p>
+  </div> 
+     -->
 </div>

@@ -2,7 +2,9 @@
 using Common;
 using Common.AspNetCore;
 using Common.Logging;
+using Domain;
 using Microsoft.AspNetCore.Mvc;
+using Model.Request;
 using Model.Response;
 using Security.API.Helpers;
 using Service;
@@ -37,6 +39,31 @@ namespace ConsejerasParesAPI.Controllers
             {
                 logger.Print_Request(null);
                 var responseJSON = service.Get();
+                logger.Print_Response(responseJSON);
+                var response = Mapper.Map<EResponseBase<ReferredResponseV1>>(responseJSON);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+                return new UtilitariesResponse<ReferredResponseV1>(config).setResponseBaseForException(ex);
+            }
+            finally
+            {
+                logger.Print_EndMethod();
+            }
+        }
+
+        [Route("InsertOrUpdate")]
+        [HttpGet]
+        public EResponseBase<ReferredResponseV1> InsertOrUpdate(ReferredRequestV1 request)
+        {
+            logger.Print_InitMethod();
+            try
+            {
+                logger.Print_Request(request);
+                var requestConvert = Mapper.Map<Referred>(request);
+                var responseJSON = service.InsertOrUpdate(requestConvert);
                 logger.Print_Response(responseJSON);
                 var response = Mapper.Map<EResponseBase<ReferredResponseV1>>(responseJSON);
                 return response;

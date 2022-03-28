@@ -31,7 +31,7 @@ namespace ConsejerasParesAPI
                 cfg.AllowNullCollections = true;
                 cfg.ValidateInlineMaps = false;
                 cfg.CreateMap(typeof(EResponseBase<>), typeof(EResponseBase<>));
-                //cfg.CreateMap(typeof(Model.Response.UserResponseV1), typeof(Domain.User));
+                cfg.CreateMap(typeof(Model.Response.CounselorResponseV2), typeof(Domain.Counselor));
                 
             });
         }
@@ -140,8 +140,8 @@ namespace ConsejerasParesAPI
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                //c.SwaggerEndpoint($"/{Configuration["swagger:site"]}/swagger/v1/swagger.json", "WebAPI v1");
-                c.SwaggerEndpoint($"/swagger/v1/swagger.json", "WebAPI v1");       
+                c.SwaggerEndpoint($"/{Configuration["swagger:site"]}/swagger/v1/swagger.json", "WebAPI v1");
+                //c.SwaggerEndpoint($"/swagger/v1/swagger.json", "WebAPI v1");       
             });
 
             // Close Swagger Configuration

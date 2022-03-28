@@ -47,5 +47,32 @@ namespace Service
 
             return response;
         }
+
+        public EResponseBase<Referred> InsertOrUpdate(Referred request)
+        {
+            Logger.InitializeLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType, Transaction);
+            EResponseBase<Referred> response;
+            try
+            {
+
+                using (var context = new ClientDbContext())
+                {
+
+                    request.CreatedOn = DateTime.Now;
+                    request.Enabled = true;
+                    context.Referreds.Add(request);
+                    context.SaveChanges();
+                    response = new UtilitariesResponse<Referred>(config).setResponseBaseForOK(request);
+
+                }
+            }
+            catch (Exception e)
+            {
+                response = new UtilitariesResponse<Referred>(config).setResponseBaseForException(e);
+                Logger.Error(e.Message);
+            }
+
+            return response;
+        }
     }
 }

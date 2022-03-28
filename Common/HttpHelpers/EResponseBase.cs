@@ -13,8 +13,8 @@ namespace Common
         public IEnumerable<TEntity> listado { get; set; }
         public TEntity objeto { get; set; }
         public string dato { get; set; }
-        /*public Exception TechnicalErrors { get; set; }
-        public List<string> FunctionalErrors { get; set; }*/
+        public Exception TechnicalErrors { get; set; }
+        public List<string> FunctionalErrors { get; set; }
 
         public object Clone()
         {

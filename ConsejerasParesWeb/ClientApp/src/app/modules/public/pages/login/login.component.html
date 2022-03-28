@@ -1,4 +1,4 @@
-<div class="login-page">
+<!-- <div class="login-page">
     <div class="form">
       <div class="logo">
         <img src="assets/images/new-logo.png" class="brand_logo" height="100" alt="Logo">
@@ -10,4 +10,37 @@
       </form>
     </div>
 </div>
-<router-outlet></router-outlet>
+<router-outlet></router-outlet> -->
+
+
+<body>
+  <section>
+      <div class="imgBx">
+          <img src="assets/images/new-logo.png" alt="WIC" class="logo">
+      </div>
+      <div class="contentBx">
+          <div class="formBx">
+              <!-- <div class="logo">
+                  <div>
+                      <img src="assets/images/new-logo.png" alt="WIC" class="logo">
+                  </div>
+              </div>
+              <hr> -->
+              <h2>Login</h2>
+              <form class="login-form" (ngSubmit)="login(form)" #form="ngForm"  novalidate>
+                  <div class="inputBx">
+                      <span>Usuario</span>
+                      <input type="text" name="username" [(ngModel)]="user.username" #username="ngModel" placeholder="Usuario">
+                  </div>
+                  <div class="inputBx">
+                      <span>Contraseña</span>
+                      <input type="password" name="password" [(ngModel)]="user.password" #password="ngModel" placeholder="Contraseña">
+                  </div>
+                  <div class="inputBx">
+                      <button type="submit">Ingresar</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </section>
+</body>

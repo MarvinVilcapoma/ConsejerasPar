@@ -2,6 +2,7 @@ mat-toolbar {
     position: sticky;
     top: 0;
     z-index: 100;
+    // z-index: 100vh;
   }
   
   ul {
@@ -34,6 +35,16 @@ mat-toolbar {
 ::ng-deep {
     .mat-menu-content {
       background-color: transparent !important;
+      display: flex;
       width: 160px;
     }
+}
+
+.btn:focus{
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  border-color: transparent !important;
 }
